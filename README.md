@@ -28,7 +28,5 @@ CampSpark is a modern social experience built with Next.js, Supabase, and Gemini
 - `src/app` - Next.js App Router pages and layouts
 - `src/app/api` - API route handlers
 - `src/utils/supabase` - Supabase server-side client utilities
-- `src/lib/marshmallow-sync.ts` - Browser helper for local RAG ingestion
 - `src/proxy.ts` - Middleware for session/profile enforcement
-- `marshmellow/main.py` - Local FastAPI service for document ingestion and query
 - `package.json` - project dependencies and scripts
