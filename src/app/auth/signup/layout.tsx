@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "CampFire",
+  title: "CampSpark",
   description: "Gather around. Your people are here.",
 };
 

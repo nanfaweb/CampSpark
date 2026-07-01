@@ -109,7 +109,7 @@ export default function SignupPage() {
   return (
     <main className="h-screen flex flex-col md:flex-row w-full text-on-surface bg-[#FFF8F2] overflow-hidden">
       {/* Left Side: Branding & Hero - Static */}
-      <section className="hidden md:flex md:w-1/2 campfire-gradient flex-col items-center justify-center p-xl relative overflow-hidden h-full">
+      <section className="hidden md:flex md:w-1/2 campspark-gradient flex-col items-center justify-center p-xl relative overflow-hidden h-full">
         <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuC7KQQicPKIY1_Kk-NobfIaLkJfmfprRzbd1DxEuj4bV1I7clkWkkVoZQ8LTK9X-aPfDs8QIjgwblhWmk4XKQ4uGd2D7g3El4H2zoEc4YC_TeTm9fKw4buqaQh9wx9lcdWE7wpMvkDUfnTdM_q2wTZRWASXJ072tpdpMOIttkYHJEqV1ntnqVYwXYJKE-0zueWPjiKFH9IyuqaHTSzrYNeFgPN2f1yn7RCNBuZ3HIYG0CT3owXkx1yRE2k7sVw91LnZFIUtE6k7WUc')" }}></div>
         <div className="relative z-10 flex flex-col items-center text-center animate-fade-in">
           <span className="material-symbols-outlined text-[500px] text-white mb-xl" style={{ fontVariationSettings: "'FILL' 1" }}>local_fire_department</span>
@@ -135,7 +135,7 @@ export default function SignupPage() {
           <div className="flex flex-col items-center md:items-start space-y-2">
             <span className="text-primary-container font-h2 text-h2 tracking-tight flex items-center gap-xs">
               <span className="material-symbols-outlined text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>local_fire_department</span>
-              <span className="text-2xl font-extrabold font-h1 tracking-tighter text-primary-container">CampFire</span>
+              <span className="text-2xl font-extrabold font-h1 tracking-tighter text-primary-container">CampSpark</span>
             </span>
             <p className="text-on-surface-variant font-body text-sm transition-all duration-300">
               {isLogin ? "Welcome back to the clearing." : "Join the clearing."}
@@ -175,97 +175,21 @@ export default function SignupPage() {
 
             {/* Form Container with dynamic height for smooth spacing */}
             <div className={`relative transition-all duration-500 ease-in-out ${isLogin ? 'h-[275px]' : 'h-[385px]'}`}>
-            {/* Login Form */}
-            {isLogin && (
-              <form className="space-y-6 animate-fade-in absolute w-full top-0 left-0" onSubmit={handleLogin}>
-                <div className="space-y-4">
-                  <div className="space-y-1.5">
-                    <label className="block font-button text-[10px] uppercase tracking-widest text-on-surface ml-sm opacity-60">Email Address</label>
-                    <input
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      className="w-full h-[50px] px-lg rounded-xl border-[#EDE0D4] bg-white focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all placeholder:text-[#6B6056]/30 text-sm text-on-surface"
-                      placeholder="you@example.com"
-                      type="email"
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <label className="block font-button text-[10px] uppercase tracking-widest text-on-surface ml-sm opacity-60">Password</label>
-                    <div className="relative">
+              {/* Login Form */}
+              {isLogin && (
+                <form className="space-y-6 animate-fade-in absolute w-full top-0 left-0" onSubmit={handleLogin}>
+                  <div className="space-y-4">
+                    <div className="space-y-1.5">
+                      <label className="block font-button text-[10px] uppercase tracking-widest text-on-surface ml-sm opacity-60">Email Address</label>
                       <input
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         required
                         className="w-full h-[50px] px-lg rounded-xl border-[#EDE0D4] bg-white focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all placeholder:text-[#6B6056]/30 text-sm text-on-surface"
-                        placeholder="Minimum 8 characters"
-                        type={showPassword ? "text" : "password"}
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600 transition-colors"
-                      >
-                        <span className="material-symbols-outlined text-[20px]">
-                          {showPassword ? 'visibility_off' : 'visibility'}
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-end">
-                  <button type="button" className="text-[10px] font-bold uppercase tracking-widest text-[#F4845F] hover:text-primary transition-colors">Forgot Password?</button>
-                </div>
-
-                <button disabled={isLoading} className="w-full h-[50px] bg-primary-container text-white rounded-xl font-button text-sm ember-glow hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-70" type="submit">
-                  {isLoading ? 'Logging In...' : 'Log In'}
-                </button>
-              </form>
-            )}
-
-            {/* Registration Form */}
-            {!isLogin && (
-              <form className="space-y-6 animate-fade-in absolute w-full top-0 left-0" onSubmit={handleSignup}>
-                <div className="grid grid-cols-1 gap-4">
-                  <div className="space-y-1.5">
-                    <label className="block font-button text-[10px] uppercase tracking-widest text-on-surface ml-sm opacity-60">Full Name</label>
-                    <input
-                      value={fullName}
-                      onChange={(e) => setFullName(e.target.value)}
-                      required
-                      className="w-full h-[50px] px-lg rounded-xl border-[#EDE0D4] bg-white focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all placeholder:text-[#6B6056]/30 text-sm text-on-surface"
-                      placeholder="e.g. John Smith"
-                      type="text"
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <label className="block font-button text-[10px] uppercase tracking-widest text-on-surface ml-sm opacity-60">Username</label>
-                    <div className="relative">
-                      <span className="absolute left-lg top-1/2 -translate-y-1/2 text-stone-400 text-sm">@</span>
-                      <input
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        required
-                        className="w-full h-[50px] pl-xl pr-lg rounded-xl border-[#EDE0D4] bg-white focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all placeholder:text-[#6B6056]/30 text-sm text-on-surface"
-                        placeholder="   e.g. wanderer_42"
-                        type="text"
+                        placeholder="you@example.com"
+                        type="email"
                       />
                     </div>
-                  </div>
-                  <div className="space-y-1.5">
-                    <label className="block font-button text-[10px] uppercase tracking-widest text-on-surface ml-sm opacity-60">Email Address</label>
-                    <input
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      className="w-full h-[50px] px-lg rounded-xl border-[#EDE0D4] bg-white focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all placeholder:text-[#6B6056]/30 text-sm text-on-surface"
-                      placeholder="you@example.com"
-                      type="email"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
                       <label className="block font-button text-[10px] uppercase tracking-widest text-on-surface ml-sm opacity-60">Password</label>
                       <div className="relative">
@@ -274,7 +198,7 @@ export default function SignupPage() {
                           onChange={(e) => setPassword(e.target.value)}
                           required
                           className="w-full h-[50px] px-lg rounded-xl border-[#EDE0D4] bg-white focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all placeholder:text-[#6B6056]/30 text-sm text-on-surface"
-                          placeholder="8+ characters"
+                          placeholder="Minimum 8 characters"
                           type={showPassword ? "text" : "password"}
                         />
                         <button
@@ -288,38 +212,114 @@ export default function SignupPage() {
                         </button>
                       </div>
                     </div>
+                  </div>
+
+                  <div className="flex items-center justify-end">
+                    <button type="button" className="text-[10px] font-bold uppercase tracking-widest text-[#F4845F] hover:text-primary transition-colors">Forgot Password?</button>
+                  </div>
+
+                  <button disabled={isLoading} className="w-full h-[50px] bg-primary-container text-white rounded-xl font-button text-sm ember-glow hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-70" type="submit">
+                    {isLoading ? 'Logging In...' : 'Log In'}
+                  </button>
+                </form>
+              )}
+
+              {/* Registration Form */}
+              {!isLogin && (
+                <form className="space-y-6 animate-fade-in absolute w-full top-0 left-0" onSubmit={handleSignup}>
+                  <div className="grid grid-cols-1 gap-4">
                     <div className="space-y-1.5">
-                      <label className="block font-button text-[10px] uppercase tracking-widest text-on-surface ml-sm opacity-60">Confirm</label>
+                      <label className="block font-button text-[10px] uppercase tracking-widest text-on-surface ml-sm opacity-60">Full Name</label>
+                      <input
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
+                        required
+                        className="w-full h-[50px] px-lg rounded-xl border-[#EDE0D4] bg-white focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all placeholder:text-[#6B6056]/30 text-sm text-on-surface"
+                        placeholder="e.g. John Smith"
+                        type="text"
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="block font-button text-[10px] uppercase tracking-widest text-on-surface ml-sm opacity-60">Username</label>
                       <div className="relative">
+                        <span className="absolute left-lg top-1/2 -translate-y-1/2 text-stone-400 text-sm">@</span>
                         <input
-                          value={confirmPassword}
-                          onChange={(e) => setConfirmPassword(e.target.value)}
+                          value={username}
+                          onChange={(e) => setUsername(e.target.value)}
                           required
-                          className="w-full h-[50px] px-lg rounded-xl border-[#EDE0D4] bg-white focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all placeholder:text-[#6B6056]/30 text-sm text-on-surface"
-                          placeholder="Repeat password"
-                          type={showConfirmPassword ? "text" : "password"}
+                          className="w-full h-[50px] pl-xl pr-lg rounded-xl border-[#EDE0D4] bg-white focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all placeholder:text-[#6B6056]/30 text-sm text-on-surface"
+                          placeholder="   e.g. wanderer_42"
+                          type="text"
                         />
-                        <button
-                          type="button"
-                          onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                          className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600 transition-colors"
-                        >
-                          <span className="material-symbols-outlined text-[20px]">
-                            {showConfirmPassword ? 'visibility_off' : 'visibility'}
-                          </span>
-                        </button>
+                      </div>
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="block font-button text-[10px] uppercase tracking-widest text-on-surface ml-sm opacity-60">Email Address</label>
+                      <input
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        className="w-full h-[50px] px-lg rounded-xl border-[#EDE0D4] bg-white focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all placeholder:text-[#6B6056]/30 text-sm text-on-surface"
+                        placeholder="you@example.com"
+                        type="email"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="space-y-1.5">
+                        <label className="block font-button text-[10px] uppercase tracking-widest text-on-surface ml-sm opacity-60">Password</label>
+                        <div className="relative">
+                          <input
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            className="w-full h-[50px] px-lg rounded-xl border-[#EDE0D4] bg-white focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all placeholder:text-[#6B6056]/30 text-sm text-on-surface"
+                            placeholder="8+ characters"
+                            type={showPassword ? "text" : "password"}
+                          />
+                          <button
+                            type="button"
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600 transition-colors"
+                          >
+                            <span className="material-symbols-outlined text-[20px]">
+                              {showPassword ? 'visibility_off' : 'visibility'}
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="block font-button text-[10px] uppercase tracking-widest text-on-surface ml-sm opacity-60">Confirm</label>
+                        <div className="relative">
+                          <input
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            required
+                            className="w-full h-[50px] px-lg rounded-xl border-[#EDE0D4] bg-white focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all placeholder:text-[#6B6056]/30 text-sm text-on-surface"
+                            placeholder="Repeat password"
+                            type={showConfirmPassword ? "text" : "password"}
+                          />
+                          <button
+                            type="button"
+                            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600 transition-colors"
+                          >
+                            <span className="material-symbols-outlined text-[20px]">
+                              {showConfirmPassword ? 'visibility_off' : 'visibility'}
+                            </span>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <button disabled={isLoading} className="w-full h-[50px] bg-primary-container text-white rounded-xl font-button text-sm ember-glow hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-70" type="submit">
-                  {isLoading ? 'Creating Account...' : 'Create Account'}
-                </button>
-              </form>
-            )}
+                  <button disabled={isLoading} className="w-full h-[50px] bg-primary-container text-white rounded-xl font-button text-sm ember-glow hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-70" type="submit">
+                    {isLoading ? 'Creating Account...' : 'Create Account'}
+                  </button>
+                </form>
+              )}
+            </div>
           </div>
-        </div>
 
           {/* Social & Footer Section - Flowing naturally below with consistent spacing */}
           <div className="flex flex-col space-y-[30px]">
@@ -340,7 +340,7 @@ export default function SignupPage() {
 
             {/* Footer */}
             <p className="text-center font-body text-xs text-[#6B6056]">
-              {isLogin ? "New to CampFire? " : "Already have an account? "}
+              {isLogin ? "New to CampSpark? " : "Already have an account? "}
               <button onClick={() => setIsLogin(!isLogin)} className="text-primary-container font-bold ml-xs hover:underline decoration-2 underline-offset-4">
                 {isLogin ? "Sign up" : "Log in"}
               </button>
@@ -356,7 +356,7 @@ export default function SignupPage() {
       {/* App Identity Anchors */}
       <footer className="fixed bottom-8 left-8 hidden lg:block opacity-40 hover:opacity-100 transition-opacity">
         <div className="flex items-center gap-sm text-white/80 font-caption">
-          <span>© 2026 CampFire Social</span>
+          <span>© 2026 CampSpark Social</span>
           <span className="w-1 h-1 rounded-full bg-white/40"></span>
           <Link href="#" className="hover:text-white underline decoration-white/20 underline-offset-4">Privacy</Link>
           <span className="w-1 h-1 rounded-full bg-white/40"></span>
