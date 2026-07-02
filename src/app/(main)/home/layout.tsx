@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "CampSpark — Home",
+  title: "CampFire — Home",
   description:
-    "Your CampSpark feed — stories, posts, and friends all in one warm place.",
+    "Your CampFire feed — stories, posts, and friends all in one warm place.",
 };
 
 export default function HomeLayout({
