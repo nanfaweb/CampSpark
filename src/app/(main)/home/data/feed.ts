@@ -1,4 +1,4 @@
-// ── CampSpark feed data ───────────────────────────────────────────────────────
+// ── CampFire feed data ───────────────────────────────────────────────────────
 
 export interface Author {
   username: string;
@@ -175,7 +175,7 @@ const FEED_DATA: FeedData = {
       username: "sourdough.saga",
       avatarUrl:
         "https://api.dicebear.com/9.x/bottts-neutral/svg?seed=sourdough",
-      reason: "New to CampSpark",
+      reason: "New to CampFire",
     },
   ],
 };
