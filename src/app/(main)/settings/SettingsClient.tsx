@@ -142,7 +142,7 @@ export default function SettingsClient({
       <div className="px-10 py-12 max-w-[1100px] w-full">
         <h1 className="text-4xl text-[#FF6B2B] font-extrabold mb-3">Settings</h1>
         <p className="text-[#644E43] font-medium text-lg mb-12 max-w-2xl">
-          Refine your CampSpark experience. Customize your presence and privacy.
+          Refine your CampFire experience. Customize your presence and privacy.
         </p>
 
         <div className="flex gap-8 items-start">
@@ -183,7 +183,7 @@ export default function SettingsClient({
             <div className="bg-white rounded-[24px] p-8 shadow-[0_4px_20px_-2px_hsla(25,30%,20%,0.08)] border border-[#F5EBE1]">
               <h2 className="text-2xl text-[#843615] font-extrabold mb-6">Security</h2>
               <p className="text-sm text-zinc-500 mb-5">
-                Change your password for your CampSpark account.
+                Change your password for your CampFire account.
               </p>
               {!canResetPassword && (
                 <div className="mb-5 text-sm rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-zinc-600">
