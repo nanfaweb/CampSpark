@@ -1,4 +1,4 @@
-// ── CampFire Database Types ──────────────────────────────────────────────────
+// ── CampSpark Database Types ──────────────────────────────────────────────────
 // Mirrors the Supabase schema. Used across server queries & client components.
 
 export type UserRole = "user" | "moderator" | "admin";
