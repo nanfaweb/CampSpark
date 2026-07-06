@@ -186,7 +186,7 @@ export default function ExploreClient({
                   </h4>
                 </Link>
                 <p className="text-[12px] font-bold uppercase tracking-[0.05em] text-[#8d7167] mb-6">
-                  <Highlight text={user.bio?.slice(0, 30) || "CampSpark member"} highlight={searchTerm} />
+                  <Highlight text={user.bio?.slice(0, 30) || "CampFire member"} highlight={searchTerm} />
                 </p>
                 {followState[user.id] ? (
                   <button
