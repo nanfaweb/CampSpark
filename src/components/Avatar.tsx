@@ -8,9 +8,9 @@ export interface AvatarProps {
 }
 
 export function Avatar({ src, alt = "", size = 40, ring = false }: AvatarProps) {
-  const imageUrl = src && src.trim() !== "" 
-    ? src 
-    : `https://api.dicebear.com/7.x/thumbs/svg?seed=${encodeURIComponent(alt || "CampFire")}`;
+  const imageUrl = src && src.trim() !== ""
+    ? src
+    : `https://api.dicebear.com/7.x/thumbs/svg?seed=${encodeURIComponent(alt || "CampSpark")}`;
 
   return (
     <div

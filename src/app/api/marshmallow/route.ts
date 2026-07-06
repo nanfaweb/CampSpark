@@ -5,7 +5,7 @@ export async function POST(request: Request) {
   try {
     const supabase = await createClient();
     const adminSupabase = await createAdminClient();
-    
+
     const { data: { user } } = await supabase.auth.getUser();
 
     if (!user) {
@@ -126,7 +126,7 @@ export async function POST(request: Request) {
     });
 
     // 4. Ask Gemini
-    const systemInstruction = `You are Marshmallow, a warm and playful AI buddy on the CampFire social network. You speak with warmth, use 1-2 emojis per response, and keep replies under 4 sentences unless the user asks for more detail. Be encouraging, creative, and cozy. If relevant posts are provided in the context, refer to them naturally to help the user.${ragContext}`;
+    const systemInstruction = `You are Marshmallow, a warm and playful AI buddy on the CampSpark social network. You speak with warmth, use 1-2 emojis per response, and keep replies under 4 sentences unless the user asks for more detail. Be encouraging, creative, and cozy. If relevant posts are provided in the context, refer to them naturally to help the user.${ragContext}`;
 
     const geminiRes = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,

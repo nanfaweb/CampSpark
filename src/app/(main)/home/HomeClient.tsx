@@ -70,7 +70,7 @@ export default function HomeClient({
   const [homeSearch, setHomeSearch] = useState("");
   const [searchResults, setSearchResults] = useState<Profile[]>([]);
   const [isSearching, setIsSearching] = useState(false);
-  
+
   // Stories State
   const [allStories, setAllStories] = useState(initialStories);
   const [activeStoryUserId, setActiveStoryUserId] = useState<string | null>(null);
@@ -111,14 +111,14 @@ export default function HomeClient({
       const { error } = await supabase.from("friendships").insert({
         requester_id: currentUser.id,
         addressee_id: targetUserId,
-        status, 
+        status,
       });
 
       if (error) {
         if (error.code === "23505") return;
         throw error;
       }
-      
+
       router.refresh();
     } catch (error) {
       setFollowState((prev) => ({ ...prev, [targetUserId]: false }));
@@ -139,7 +139,7 @@ export default function HomeClient({
       .select("*")
       .or(`username.ilike.%${val}%,display_name.ilike.%${val}%`)
       .limit(5);
-    
+
     if (data) setSearchResults(data as Profile[]);
     setIsSearching(false);
   }
@@ -151,7 +151,7 @@ export default function HomeClient({
   };
 
   // ── Story Logic ────────────────────────────────────────────────────────────
-  
+
   const storyAuthors = Array.from(new Set(allStories.map(s => s.author_id))).map(authorId => {
     const authorStories = allStories.filter(s => s.author_id === authorId);
     return {
@@ -159,7 +159,7 @@ export default function HomeClient({
       stories: authorStories
     };
   });
-  
+
   const groupedStories = storyAuthors.reduce((acc, entry) => {
     acc[entry.author.id] = entry;
     return acc;
@@ -218,10 +218,10 @@ export default function HomeClient({
         .eq("id", storyId);
 
       if (error) throw error;
-      
+
       const updatedStories = allStories.filter(s => s.id !== storyId);
       setAllStories(updatedStories);
-      
+
       if (updatedStories.filter(s => s.author_id === activeStoryUserId).length === 0) {
         setActiveStoryUserId(null);
       } else if (currentStoryIndex >= updatedStories.filter(s => s.author_id === activeStoryUserId).length) {
@@ -275,12 +275,12 @@ export default function HomeClient({
               className="w-full bg-white border border-orange-50 rounded-2xl py-4 pl-12 pr-6 shadow-sm focus:ring-2 focus:ring-orange-200 focus:border-orange-200 outline-none transition-all text-sm font-medium"
             />
           </div>
-          
+
           {searchResults.length > 0 && (
             <div className="absolute top-full left-0 w-full mt-2 bg-white rounded-2xl shadow-2xl border border-orange-50 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
               {searchResults.map((user) => (
-                <Link 
-                  key={user.id} 
+                <Link
+                  key={user.id}
                   href={`/profile/${user.username}`}
                   className="flex items-center gap-3 p-4 hover:bg-orange-50 transition-colors"
                 >
@@ -299,7 +299,7 @@ export default function HomeClient({
           {/* Your Story Upload */}
           <div className="flex-shrink-0 flex flex-col items-center gap-2">
             <div className="relative group">
-              <div 
+              <div
                 className={`p-[3px] rounded-full transition-transform group-hover:scale-105 cursor-pointer ${allStories.some(s => s.author_id === currentUser.id) ? 'story-ring' : ''}`}
                 onClick={() => {
                   if (allStories.some(s => s.author_id === currentUser.id)) {
@@ -318,7 +318,7 @@ export default function HomeClient({
                   />
                 </div>
               </div>
-              <div 
+              <div
                 onClick={(e) => { e.stopPropagation(); storyInputRef.current?.click(); }}
                 className="absolute bottom-0 right-0 bg-[#FF6B2B] text-white rounded-full w-6 h-6 flex items-center justify-center border-2 border-white shadow-sm hover:scale-110 transition-transform cursor-pointer z-10"
               >
@@ -331,19 +331,19 @@ export default function HomeClient({
               )}
             </div>
             <span className="text-[10px] tracking-widest uppercase text-zinc-400 font-bold">Your Story</span>
-            <input 
-              type="file" 
-              ref={storyInputRef} 
-              onChange={handleStoryUpload} 
-              className="hidden" 
-              accept="image/*,video/*" 
+            <input
+              type="file"
+              ref={storyInputRef}
+              onChange={handleStoryUpload}
+              className="hidden"
+              accept="image/*,video/*"
             />
           </div>
 
           {/* Friends' Stories */}
           {storyAuthors.filter(a => a.author.id !== currentUser.id).map(({ author, stories }) => (
-            <div 
-              key={author.id} 
+            <div
+              key={author.id}
               className="flex-shrink-0 flex flex-col items-center gap-2 cursor-pointer group"
               onClick={() => {
                 setActiveStoryUserId(author.id);
@@ -440,7 +440,7 @@ export default function HomeClient({
           <div className="absolute top-4 left-0 w-full px-4 flex gap-1.5 z-50">
             {activeUserStories.map((_, idx) => (
               <div key={idx} className="h-1 flex-1 bg-white/20 rounded-full overflow-hidden">
-                <div 
+                <div
                   key={`${activeStoryUserId}-${idx}-${currentStoryIndex}`}
                   className={`h-full bg-white ${idx === currentStoryIndex ? 'animate-story-progress' : idx < currentStoryIndex ? 'w-full' : 'w-0'}`}
                 />
@@ -462,7 +462,7 @@ export default function HomeClient({
 
           <div className="absolute top-10 right-14 flex items-center gap-2 z-50">
             {activeUserStories[currentStoryIndex].author_id === currentUser.id && (
-              <button 
+              <button
                 onClick={(e) => {
                   e.stopPropagation();
                   handleDeleteStory(activeUserStories[currentStoryIndex].id);
@@ -473,7 +473,7 @@ export default function HomeClient({
                 <Icon name="delete" size={24} className="group-hover:text-red-400" />
               </button>
             )}
-            <button 
+            <button
               onClick={() => setActiveStoryUserId(null)}
               className="text-white p-2 hover:bg-white/10 rounded-full transition-colors"
             >
@@ -484,7 +484,7 @@ export default function HomeClient({
           {/* Story Content Container */}
           <div className="relative w-full h-[90vh] max-w-[500px] aspect-[9/16] bg-zinc-900 rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/10">
             {/* Nav regions (Invisible) */}
-            <div 
+            <div
               className="absolute left-0 top-0 w-1/4 h-full cursor-pointer z-30"
               onClick={(e) => {
                 e.stopPropagation();
@@ -502,7 +502,7 @@ export default function HomeClient({
                 }
               }}
             />
-            <div 
+            <div
               className="absolute right-0 top-0 w-1/4 h-full cursor-pointer z-30"
               onClick={(e) => {
                 e.stopPropagation();
@@ -523,15 +523,15 @@ export default function HomeClient({
 
             {/* Visible Navigation Buttons */}
             <div className="absolute left-4 top-1/2 -translate-y-1/2 z-40">
-              <button 
+              <button
                 onClick={(e) => {
                   e.stopPropagation();
                   if (currentStoryIndex > 0) setCurrentStoryIndex(prev => prev - 1);
                   else {
                     const idx = storyAuthors.findIndex(a => a.author.id === activeStoryUserId);
                     if (idx > 0) {
-                      setActiveStoryUserId(storyAuthors[idx-1].author.id);
-                      setCurrentStoryIndex(storyAuthors[idx-1].stories.length - 1);
+                      setActiveStoryUserId(storyAuthors[idx - 1].author.id);
+                      setCurrentStoryIndex(storyAuthors[idx - 1].stories.length - 1);
                     }
                   }
                 }}
@@ -541,14 +541,14 @@ export default function HomeClient({
               </button>
             </div>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 z-40">
-              <button 
+              <button
                 onClick={(e) => {
                   e.stopPropagation();
                   if (currentStoryIndex < activeUserStories.length - 1) setCurrentStoryIndex(prev => prev + 1);
                   else {
                     const idx = storyAuthors.findIndex(a => a.author.id === activeStoryUserId);
                     if (idx < storyAuthors.length - 1) {
-                      setActiveStoryUserId(storyAuthors[idx+1].author.id);
+                      setActiveStoryUserId(storyAuthors[idx + 1].author.id);
                       setCurrentStoryIndex(0);
                     } else {
                       setActiveStoryUserId(null);
@@ -562,17 +562,17 @@ export default function HomeClient({
             </div>
 
             {activeUserStories[currentStoryIndex].media_type === "video" ? (
-              <video 
-                src={activeUserStories[currentStoryIndex].media_url} 
-                autoPlay 
+              <video
+                src={activeUserStories[currentStoryIndex].media_url}
+                autoPlay
                 muted={false}
                 playsInline
                 className="w-full h-full object-cover"
               />
             ) : (
-              <img 
-                src={activeUserStories[currentStoryIndex].media_url} 
-                alt="story" 
+              <img
+                src={activeUserStories[currentStoryIndex].media_url}
+                alt="story"
                 className="w-full h-full object-cover select-none"
               />
             )}
@@ -663,7 +663,7 @@ export default function HomeClient({
                         </p>
                       </Link>
                       <p className="text-[10px] text-zinc-400">
-                        New to CampFire
+                        New to CampSpark
                       </p>
                     </div>
                   </div>
@@ -703,7 +703,7 @@ export default function HomeClient({
               </a>
             ))}
           </div>
-          <p>© 2025 CampFire ✨ Stay Warm</p>
+          <p>© 2025 CampSpark ✨ Stay Warm</p>
         </div>
       </aside>
 

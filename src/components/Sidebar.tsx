@@ -24,7 +24,7 @@ export function Sidebar({ currentUsername }: { currentUsername?: string }) {
     <nav className="fixed left-0 top-0 h-screen w-64 bg-white/40 backdrop-blur-md border-r border-orange-50/50 flex flex-col z-50">
       <div className="py-8 px-8 flex flex-col">
         <Link href="/home" className="text-3xl font-black tracking-tighter text-[#A83900]">
-          CampFire
+          CampSpark
         </Link>
         <span className="text-[10px] font-bold text-[#A89F9A] uppercase tracking-widest mt-1">
           Stay Warm
@@ -35,16 +35,15 @@ export function Sidebar({ currentUsername }: { currentUsername?: string }) {
         {navItems.map(({ icon, label, href }) => {
           // Simple active state check. Could be refined based on actual routes.
           const active = pathname?.startsWith(href) || (pathname === "/" && href === "/home");
-          
+
           return (
             <Link
               key={label}
               href={href}
-              className={`flex items-center gap-4 px-6 py-3.5 transition-all duration-200 rounded-xl mx-2 ${
-                active
+              className={`flex items-center gap-4 px-6 py-3.5 transition-all duration-200 rounded-xl mx-2 ${active
                   ? "text-[#A83900] font-bold bg-[#FFF1E6] shadow-sm"
                   : "text-[#6B6056] font-semibold hover:text-[#FF6B2B] hover:bg-[#FFF1E6]/50"
-              }`}
+                }`}
             >
               <Icon name={icon} fill={active} size={22} />
               <span className="text-[12px] tracking-widest">{label}</span>
@@ -55,7 +54,7 @@ export function Sidebar({ currentUsername }: { currentUsername?: string }) {
 
       {/* New Spark Button */}
       <div className="p-6 mt-auto">
-        <button 
+        <button
           onClick={() => {
             router.push(`/home?create=true&t=${Date.now()}`);
           }}
