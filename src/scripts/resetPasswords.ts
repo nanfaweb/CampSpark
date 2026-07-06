@@ -25,17 +25,17 @@ const supabase = createClient(
     serviceRoleKey
 );
 
-const DEFAULT_PASSWORD = 'campfire';
+const DEFAULT_PASSWORD = 'campspark';
 
 // ----------------------------------------------------------------
 // Users to reset — add/remove as needed
 // ----------------------------------------------------------------
 const MANUAL_USERS: { email: string; username: string }[] = [
-    { email: 'abnoc@campfire.com', username: 'abnoc79' },
-    { email: 'ddahsan@campfire.com', username: 'daredevil6' },
-    { email: 'wali@campfire.com', username: 'penciluser3' },
-    { email: 'nanfa@campfire.com', username: 'notnanfa' },
-    { email: 'saad@campfire.com', username: 'saaddriazz' },
+    { email: 'abnoc@campspark.com', username: 'abnoc79' },
+    { email: 'ddahsan@campspark.com', username: 'daredevil6' },
+    { email: 'wali@campspark.com', username: 'penciluser3' },
+    { email: 'nanfa@campspark.com', username: 'notnanfa' },
+    { email: 'saad@campspark.com', username: 'saaddriazz' },
 ];
 
 async function getAllAuthUsers() {
@@ -159,7 +159,7 @@ async function resetPasswords() {
         }
     }
 
-    console.log('\nDone. All users can now log in with password: "campfire"');
+    console.log('\nDone. All users can now log in with password: "campspark"');
     console.log('Remind users to change their password after first login.');
 }
 

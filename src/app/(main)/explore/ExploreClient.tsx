@@ -71,7 +71,7 @@ export default function ExploreClient({
         // Follow: handle public vs private
         const targetUser = recommendedUsers.find(u => u.id === userId);
         const status = targetUser?.is_public_profile ? "accepted" : "pending";
-        
+
         await supabase.from("friendships").insert({
           requester_id: currentUserId,
           addressee_id: userId,
@@ -91,13 +91,13 @@ export default function ExploreClient({
       day: "numeric",
     });
 
-  const filteredUsers = recommendedUsers.filter(u => 
+  const filteredUsers = recommendedUsers.filter(u =>
     u.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
     (u.display_name || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
     (u.bio || "").toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const filteredPosts = posts.filter(p => 
+  const filteredPosts = posts.filter(p =>
     p.content.toLowerCase().includes(searchTerm.toLowerCase()) ||
     p.author.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
     (p.author.display_name || "").toLowerCase().includes(searchTerm.toLowerCase())
@@ -186,7 +186,7 @@ export default function ExploreClient({
                   </h4>
                 </Link>
                 <p className="text-[12px] font-bold uppercase tracking-[0.05em] text-[#8d7167] mb-6">
-                  <Highlight text={user.bio?.slice(0, 30) || "CampFire member"} highlight={searchTerm} />
+                  <Highlight text={user.bio?.slice(0, 30) || "CampSpark member"} highlight={searchTerm} />
                 </p>
                 {followState[user.id] ? (
                   <button

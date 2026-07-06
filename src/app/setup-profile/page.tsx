@@ -43,7 +43,7 @@ export default function SetupProfilePage() {
 
     try {
       const { data: { user } } = await supabase.auth.getUser();
-      
+
       if (!user) {
         throw new Error("No user found. Please log in.");
       }
@@ -106,7 +106,7 @@ export default function SetupProfilePage() {
   return (
     <main className="h-screen flex flex-col md:flex-row w-full text-on-surface bg-[#FFF8F2] overflow-hidden">
       {/* Left Side: Branding & Hero */}
-      <section className="hidden md:flex md:w-1/2 campfire-gradient flex-col items-center justify-center p-xl relative overflow-hidden h-full">
+      <section className="hidden md:flex md:w-1/2 campspark-gradient flex-col items-center justify-center p-xl relative overflow-hidden h-full">
         <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuC7KQQicPKIY1_Kk-NobfIaLkJfmfprRzbd1DxEuj4bV1I7clkWkkVoZQ8LTK9X-aPfDs8QIjgwblhWmk4XKQ4uGd2D7g3El4H2zoEc4YC_TeTm9fKw4buqaQh9wx9lcdWE7wpMvkDUfnTdM_q2wTZRWASXJ072tpdpMOIttkYHJEqV1ntnqVYwXYJKE-0zueWPjiKFH9IyuqaHTSzrYNeFgPN2f1yn7RCNBuZ3HIYG0CT3owXkx1yRE2k7sVw91LnZFIUtE6k7WUc')" }}></div>
         <div className="relative z-10 flex flex-col items-center text-center animate-fade-in">
           <span className="material-symbols-outlined text-[300px] text-white/90 mb-xl" style={{ fontVariationSettings: "'FILL' 1" }}>person_edit</span>
@@ -160,10 +160,10 @@ export default function SetupProfilePage() {
                 <div className="absolute inset-0 rounded-full bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                   <span className="material-symbols-outlined text-white">photo_camera</span>
                 </div>
-                <input 
-                  type="file" 
-                  accept="image/*" 
-                  onChange={handleAvatarChange} 
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleAvatarChange}
                   className="absolute inset-0 opacity-0 cursor-pointer w-full h-full rounded-full"
                 />
               </div>
@@ -196,8 +196,8 @@ export default function SetupProfilePage() {
             {/* Marshmallow AI Consent */}
             <div className="p-4 rounded-xl border border-primary-container/20 bg-primary-container/5 flex items-start gap-3">
               <div className="pt-0.5">
-                <input 
-                  type="checkbox" 
+                <input
+                  type="checkbox"
                   id="marshmallow-consent"
                   checked={marshmallowConsent}
                   onChange={(e) => setMarshmallowConsent(e.target.checked)}
@@ -207,20 +207,20 @@ export default function SetupProfilePage() {
               <label htmlFor="marshmallow-consent" className="flex flex-col cursor-pointer">
                 <span className="text-sm font-bold text-primary-container">Enable Marshmallow AI</span>
                 <span className="text-xs text-on-surface-variant mt-1 leading-relaxed">
-                  Allow CampFire's RAG AI to index your private posts to provide personalized search and chat experiences. You can change this later.
+                  Allow CampSpark's RAG AI to index your private posts to provide personalized search and chat experiences. You can change this later.
                 </span>
               </label>
             </div>
 
-            <button 
-              disabled={isLoading} 
-              className="w-full h-[50px] bg-primary-container text-white rounded-xl font-button text-sm ember-glow hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-70 mt-4 flex items-center justify-center gap-2" 
+            <button
+              disabled={isLoading}
+              className="w-full h-[50px] bg-primary-container text-white rounded-xl font-button text-sm ember-glow hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-70 mt-4 flex items-center justify-center gap-2"
               type="submit"
             >
               {isLoading ? 'Saving...' : 'Welcome to the Camp'}
               {!isLoading && <span className="material-symbols-outlined text-[18px]">arrow_forward</span>}
             </button>
-            
+
             <button
               type="button"
               onClick={() => router.push('/home')}
