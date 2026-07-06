@@ -442,7 +442,7 @@ create table public.post_embeddings (
   unique(post_id, chunk_index)
 );
 
--- HNSW index for cosine similarity — best accuracy at CampFire's scale
+-- HNSW index for cosine similarity — best accuracy at CampSpark's scale
 create index idx_post_embeddings_hnsw
   on public.post_embeddings
   using hnsw (embedding vector_cosine_ops)

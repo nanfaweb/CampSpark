@@ -24,7 +24,7 @@ export function Sidebar({ currentUsername }: { currentUsername?: string }) {
     <nav className="fixed left-0 top-0 h-screen w-64 bg-white/40 backdrop-blur-md border-r border-orange-50/50 flex flex-col z-50">
       <div className="py-8 px-8 flex flex-col">
         <Link href="/home" className="text-3xl font-black tracking-tighter text-[#A83900]">
-          CampFire
+          CampSpark
         </Link>
         <span className="text-[10px] font-bold text-[#A89F9A] uppercase tracking-widest mt-1">
           Stay Warm

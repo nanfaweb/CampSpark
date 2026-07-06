@@ -159,7 +159,7 @@ export default function NotificationsClient({
                         <Avatar src={req.requester.avatar_url} alt={req.requester.username} size={56} />
                         <div>
                           <p className="font-bold text-[#231a11]">{req.requester.display_name || req.requester.username}</p>
-                          <p className="text-xs text-zinc-400">wants to join your campfire</p>
+                          <p className="text-xs text-zinc-400">wants to join your campspark</p>
                         </div>
                       </div>
                       <div className="flex gap-2">
