@@ -1,6 +1,6 @@
-# CampFire
+# CampSpark
 
-CampFire is a modern social experience built with Next.js, Supabase, and Gemini AI. It combines a social feed, messaging, and a cozy AI companion called Marshmallow. The app also supports local RAG ingestion via a Python FastAPI service for richer personalized AI responses.
+CampSpark is a modern social experience built with Next.js, Supabase, and Gemini AI. It combines a social feed, messaging, and a cozy AI companion called Marshmallow. The app also supports local RAG ingestion via a Python FastAPI service for richer personalized AI responses.
 
 ## Features
 
